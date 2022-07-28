@@ -40,6 +40,7 @@ char *get_next_line(int fd, static char *str)
         //buf = ;
 
        // printf("%s", buf);
+        
         return (buf);
     }
     else {
