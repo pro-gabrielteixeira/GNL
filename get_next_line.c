@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 01:55:34 by gateixei          #+#    #+#             */
-/*   Updated: 2022/07/28 01:55:34 by gateixei         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:58:00 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int ft_endline(char *str)
     return (i);
 }
 
-char *get_next_line(int fd)
+char *get_next_line(int fd, static char *str)
 {
-    static char *buf;
+    char *buf;
     int i;
 
     buf = (char*)malloc(BUFFER_SIZE * sizeof(char));
@@ -37,25 +37,27 @@ char *get_next_line(int fd)
     i = ft_endline(buf);
     if (i < (int) BUFFER_SIZE)
     {
-        buf[i] = '\0';
+        //buf = ;
 
-        printf("%s", buf);
+       // printf("%s", buf);
         return (buf);
     }
     else {
-        printf("%s", buf);
+	str = 
         get_next_line(fd);
     }
 }
 
 int main(void)
 {
-    char *str;
+    static char *str;
     int fd;
     int i;
     
     fd = open("texto.txt", O_RDONLY);
     str = get_next_line(fd);
-    //printf("\n");
+    //str = get_next_line(fd);
+    //str = get_next_line(fd);
+    printf("%s", str);
     return 0;
 }
