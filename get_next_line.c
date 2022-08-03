@@ -44,7 +44,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i] != '\0')
 		new_str[p++] = s2[i++];
 	new_str[p] = '\0';
-    free(s1);
+    //free(s2);
 	return (new_str);
 }
 
@@ -63,9 +63,34 @@ int next_line_char(char *buf)
     return (0);
 }
 
+char *get_full_line(char *buf, int i)
+{
+    int c;
+    int n;
+    char    *temp;
+
+    n = 0;
+    c = BUFFER_SIZE - i;
+    temp = (char*)malloc(sizeof(char) * c);
+    while (c < BUFFER_SIZE)
+        temp[n++] = buf[c++];
+    temp[n] = '\0';
+    return (temp);
+}
+
+char *fix_buf(char *buf,int i)
+{
+    int c;
+
+    c = BUFFER_SIZE - i;
+    while (c < BUFFER_SIZE)
+        buf[c++] = '\0';
+    return (buf);
+}
 
 char *get_next_line(int fd)
 {
+    static char *temp;
     char    *line;
     char    *buf;
     int i;
@@ -76,10 +101,15 @@ char *get_next_line(int fd)
     line[0] = '\0';
     i = next_line_char(buf);
     if (!i) //beware from EOF exception, infinite loop
-            line = get_next_line(fd);
-    else if (buf[i] != '\n' || BUFFER_SIZE > (i + 1)) //add check when buffer is bigger than line
-        printf("ELSE\n");
+        line = get_next_line(fd);
+    else if (buf[i] != '\n' || BUFFER_SIZE > (i + 1))
+    {
+        temp = get_full_line(buf, i);
+        buf = fix_buf(buf, i);
+    }
     line = ft_strjoin(buf, line);
+    if (temp)
+        line = ft_strjoin(temp, line);
     return (line);
 }
 
@@ -90,10 +120,12 @@ int main(void)
     
     fd = open("texto.txt", O_RDONLY);
     str = get_next_line(fd);
-    printf("palavra - %s", str);
+    printf("Linha - %sFIM/", str);
     str = get_next_line(fd);
-    printf("palavra - %s", str);
+    printf("Linha - %sFIM/", str);
     str = get_next_line(fd);
-    printf("palavra - %s", str);
+    printf("Linha - %sFIM/", str);
+    str = get_next_line(fd);
+    printf("Linha - %sFIM/", str);
     return 0;
 }
