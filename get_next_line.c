@@ -63,7 +63,7 @@ int next_line_char(char *buf)
     return (0);
 }
 
-char *get_full_line(char *buf, int i)
+char *get_buffer(char *buf, int i)
 {
     int c;
     int n;
@@ -88,6 +88,24 @@ char *fix_buf(char *buf,int i)
     return (buf);
 }
 
+char *get_full_line(char *temp, char *line, char *buf, int i, int fd)
+{
+    buf = (char*)malloc(BUFFER_SIZE * sizeof(char));
+    read(fd, buf, BUFFER_SIZE);
+    line = (char*)malloc(sizeof(char));
+    line[0] = '\0';
+    i = next_line_char(buf);
+    if (!i) //beware from EOF exception, infinite loop
+        line = get_full_line(temp, line, buf, i, fd);
+    else if (buf[i] != '\n' || BUFFER_SIZE > (i + 1))
+    {
+        temp = get_buffer(buf, i);
+        buf = fix_buf(buf, i);
+    }
+    line = ft_strjoin(buf, line);
+    return (line);
+}
+
 char *get_next_line(int fd)
 {
     static char *temp;
@@ -100,16 +118,21 @@ char *get_next_line(int fd)
     line = (char*)malloc(sizeof(char));
     line[0] = '\0';
     i = next_line_char(buf);
+    if (line[0] == '\0' && temp)
+    {
+        line = get_full_line(temp, line, buf, i, fd);
+        line = ft_strjoin(buf, line);
+        line = ft_strjoin(temp, line);
+        return (line);
+    }
     if (!i) //beware from EOF exception, infinite loop
         line = get_next_line(fd);
     else if (buf[i] != '\n' || BUFFER_SIZE > (i + 1))
     {
-        temp = get_full_line(buf, i);
+        temp = get_buffer(buf, i);
         buf = fix_buf(buf, i);
     }
     line = ft_strjoin(buf, line);
-    if (temp)
-        line = ft_strjoin(temp, line);
     return (line);
 }
 
@@ -127,5 +150,6 @@ int main(void)
     printf("Linha - %sFIM/", str);
     str = get_next_line(fd);
     printf("Linha - %sFIM/", str);
+    
     return 0;
 }
