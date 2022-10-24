@@ -148,8 +148,6 @@ int main(void)
     printf("Linha - %sFIM/", str);
     str = get_next_line(fd);
     printf("Linha - %sFIM/", str);
-    str = get_next_line(fd);
-    printf("Linha - %sFIM/", str);
     
     return 0;
 }
