@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:09:53 by gateixei          #+#    #+#             */
-/*   Updated: 2022/10/26 00:13:25 by gateixei         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:32:55 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,34 @@ int main(void)
     
     fd = open("texto.txt", O_RDONLY);
     str = get_next_line(fd);
-    printf("Linha - %s - FIM\n", str);
+    printf("Linha:%sFIM\n", str);
     str = get_next_line(fd);
-    printf("Linha - %s - FIM\n", str);
+    printf("Linha:%sFIM\n", str);
     str = get_next_line(fd);
-    printf("Linha - %s - FIM\n", str);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
     return (0);
 }
