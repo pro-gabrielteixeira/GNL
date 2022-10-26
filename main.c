@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:09:53 by gateixei          #+#    #+#             */
-/*   Updated: 2022/10/26 16:32:55 by gateixei         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:42:33 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@ int main(void)
     int fd;
     
     fd = open("texto.txt", O_RDONLY);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
+    str = get_next_line(fd);
+    printf("Linha:%sFIM\n", str);
     str = get_next_line(fd);
     printf("Linha:%sFIM\n", str);
     str = get_next_line(fd);

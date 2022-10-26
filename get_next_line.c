@@ -30,7 +30,7 @@ char *after_next_line(char *s1, char *s2)
 	while (s1[i] != '\0')
 		new_str[p++] = s1[i++];
     i = ft_strlen_next_line(s2) + 1;
-	while (s2[i] != '\0')
+	while (s2[i] != '\0' && s2[i] != '\n')
 		new_str[p++] = s2[i++];
 	new_str[p] = '\0';
 	return (new_str);
@@ -100,5 +100,5 @@ char *get_next_line(int fd)
     if (verify_next_line(buf))
         break;
     }
-    return (line); //beware from EOF exception, infinite loop
+    return (line); //EOF exception, infinite loop
 }
