@@ -20,7 +20,7 @@ int main(void)
     
     i = 0;
     fd = open("texto.txt", O_RDONLY);
-    // while (i < 25)
+    // while (i < 1)
     // {
     // str = get_next_line(fd);
     // printf("Linha:%sFIM\n", str);
@@ -28,5 +28,6 @@ int main(void)
     // }
     while (str = get_next_line(fd))
         printf("Linha:%sFIM\n", str);
+    free(str);
     return (0);
 }
