@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:09:53 by gateixei          #+#    #+#             */
-/*   Updated: 2022/10/26 16:42:33 by gateixei         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:45:00 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,17 @@ int main(void)
 {
     char *str;
     int fd;
+    int i;
     
+    i = 0;
     fd = open("texto.txt", O_RDONLY);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
-    str = get_next_line(fd);
-    printf("Linha:%sFIM\n", str);
+    // while (i < 25)
+    // {
+    // str = get_next_line(fd);
+    // printf("Linha:%sFIM\n", str);
+    // i++;
+    // }
+    while (str = get_next_line(fd))
+        printf("Linha:%sFIM\n", str);
     return (0);
 }
